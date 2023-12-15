@@ -341,7 +341,7 @@ export const ExamenEntrada = ({
                         !allQuestionsAnswered ? 'bg-primary/70' : 'bg-primary'
                       } flex items-center text-3xl  hover:bg-primary/80 transition-colors rounded-xl text-white px-8 py-4`}
                     >
-                      Terminar Examen
+                      Terminar Exámen
                     </button>
                   )}
                 </div>

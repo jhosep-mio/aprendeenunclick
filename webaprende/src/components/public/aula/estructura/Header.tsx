@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { logo_white } from '../../../shared/images'
 import { GoTriangleDown } from 'react-icons/go'
 import { PiBookOpenTextLight } from 'react-icons/pi'
@@ -9,6 +9,7 @@ import { Global } from '../../../../helper/Global'
 import axios from 'axios'
 
 const HeaderAula = (): JSX.Element => {
+  const navigate = useNavigate()
   const { auth, setAuth, token } = useAuth()
   const cerrarSession = async (): Promise<void> => {
     const data = new FormData()
@@ -30,6 +31,7 @@ const HeaderAula = (): JSX.Element => {
       foto: '',
       portada: ''
     })
+    navigate('/')
   }
   return (
     <>
@@ -37,7 +39,7 @@ const HeaderAula = (): JSX.Element => {
         <nav className="headerAula__nav">
           <div className="headerAula__nav__logo">
             <picture className="">
-              <Link to="/">
+              <Link to="/aula">
                 <img src={logo_white} alt="" />
               </Link>
             </picture>

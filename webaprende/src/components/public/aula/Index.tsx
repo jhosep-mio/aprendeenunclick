@@ -41,7 +41,7 @@ export const Index = (): JSX.Element | undefined => {
                     </div>
                     <span>Mis calificaciones</span>
                   </Link>
-                  <Link to="/" className="btn1">
+                  <Link to="cursos" className="btn1">
                     <div className="svg-wrapper-1">
                       <div className="svg-wrapper">
                         <SiGitbook />

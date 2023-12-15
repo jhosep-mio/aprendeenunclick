@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom'
-import useAuth from '../../../hooks/useAuth'
 import { useEffect, useState } from 'react'
 import {
   type valuesExamenesEntrada,
@@ -10,7 +9,7 @@ import { Global } from '../../../helper/Global'
 import Loading from '../../shared/Loading'
 const Curso = (): JSX.Element => {
   const { id } = useParams()
-  const { token, loading } = useAuth()
+  const token = localStorage.getItem('tokenUser')
   const [curso, setCurso] = useState<productosValues | null>(null)
   const [loadingComponent, setLoadingComponent] = useState(true)
   const [validacion, setValidacion] = useState(false)
@@ -48,11 +47,9 @@ const Curso = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if (!loading && token) {
-      getValidacion()
-      getCurso()
-    }
-  }, [loading])
+    getValidacion()
+    getCurso()
+  }, [])
 
   return (
     <>

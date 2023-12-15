@@ -1,12 +1,11 @@
 import axios from 'axios'
 import { Global } from '../../../../helper/Global'
-import useAuth from '../../../../hooks/useAuth'
 import CardCurso from './CardCurso'
 import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 import { type valuesExamenesEntrada, type productosValues } from '../../../shared/Interfaces'
 
 const GridCursos = ({ setLoadingComponent }: { setLoadingComponent: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
-  const { token, loading } = useAuth()
+  const token = localStorage.getItem('tokenUser')
   const [cursos, setCursos] = useState<productosValues[]>([])
   const [examenes, setAllExamenes] = useState<valuesExamenesEntrada[]>([])
 
@@ -35,11 +34,9 @@ const GridCursos = ({ setLoadingComponent }: { setLoadingComponent: Dispatch<Set
   }
 
   useEffect(() => {
-    if (!loading && token) {
-      getValidacion()
-      getCursos()
-    }
-  }, [loading])
+    getValidacion()
+    getCursos()
+  }, [])
 
   return (
     <>

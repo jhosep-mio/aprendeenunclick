@@ -13,26 +13,18 @@ import 'swiper/css/navigation'
 
 import { MdEmail, MdLocalPhone, MdOutlineWhatsapp } from 'react-icons/md'
 import { useEffect, useState } from 'react'
-import FormData from '../shared/pagos/FormData'
 import useAuth from '../../hooks/useAuth'
 import Loading from '../shared/Loading'
 import { type productosValues } from '../shared/Interfaces'
 import axios from 'axios'
 import { Global } from '../../helper/Global'
+import { ListaPlanes } from './planes/ListaPlanes'
 
 const Home = (): JSX.Element => {
   const { auth, token, loading } = useAuth()
-  const [open, setOpen] = useState(false)
   const [cursos, setCursos] = useState<productosValues[]>([])
   const [loadingComponent, setLoadingComponent] = useState(false)
 
-  const handleOpen = (): void => {
-    setOpen(true)
-  }
-
-  const handleClose = (): void => {
-    setOpen(false)
-  }
   const getCursos = async (): Promise<void> => {
     const request = await axios.get(`${Global.url}/getProductosToAula`, {
       headers: {
@@ -53,7 +45,6 @@ const Home = (): JSX.Element => {
   return (
     <>
       {loadingComponent && <Loading />}
-      {open && <FormData open={open} handleClose={handleClose} />}
       <section className="sectSlide" id="inicio">
         <div className="sectSlide__main">
           <div className="sectSlide__main__item">
@@ -82,73 +73,8 @@ const Home = (): JSX.Element => {
           </div>
         </div>
       </section>
-      <section className="planes" id="planes">
-        <div className="planes__title">
-          <h2>Tenemos los mejores planes para ti</h2>
-        </div>
-        <div className="planes__main">
-          <div className="planes__main__item">
-            <div className="planes__main__item__head">
-              <span>Plan básico</span>
-              <h5>S/. 29/mes</h5>
-            </div>
-            <div className="planes__main__item__body">
-              <ul>
-                <li>Acceso a 4 cursos</li>
-                <li>Contenido interactivo </li>
-                <li>Actualizaciones regulares</li>
-                <li>Precio asequible para familias</li>
-                <li>Soporte en línea para dudas y preguntas</li>
-              </ul>
-            </div>
-            <div className="planes__main__item__foot">
-              <button type="button" onClick={handleOpen} className="btn2">
-                Comprar
-              </button>
-            </div>
-          </div>
-          <div className="planes__main__item">
-            <div className="planes__main__item__head">
-              <span>Plan estándar</span>
-              <h5>S/. 49/mes</h5>
-            </div>
-            <div className="planes__main__item__body">
-              <ul>
-                <li>Acceso a 4 cursos</li>
-                <li>Contenido interactivo </li>
-                <li>Actualizaciones regulares</li>
-                <li>Precio asequible para familias</li>
-                <li>Soporte en línea para dudas y preguntas</li>
-              </ul>
-            </div>
-            <div className="planes__main__item__foot">
-              <button onClick={handleOpen} className="btn2">
-                Comprar
-              </button>
-            </div>
-          </div>
-          <div className="planes__main__item">
-            <div className="planes__main__item__head">
-              <span>Plan premium</span>
-              <h5>S/. 79/mes</h5>
-            </div>
-            <div className="planes__main__item__body">
-              <ul>
-                <li>Acceso a 4 cursos</li>
-                <li>Contenido interactivo </li>
-                <li>Actualizaciones regulares</li>
-                <li>Precio asequible para familias</li>
-                <li>Soporte en línea para dudas y preguntas</li>
-              </ul>
-            </div>
-            <div className="planes__main__item__foot">
-              <button onClick={handleOpen} className="btn2">
-                Comprar
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <ListaPlanes/>
 
       <section className="sectNosotros">
         <div className="sectNosotros__main">

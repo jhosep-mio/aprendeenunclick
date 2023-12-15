@@ -10,6 +10,10 @@ html {
   font-size: 62.5%;
 }
 
+.font_main {
+  font-family: "Roboto", sans-serif !important;
+}
+
 /* Barra de desplazamiento */
 .scroll_style::-webkit-scrollbar {
   width: 4px; /* Ancho de la barra de desplazamiento */
@@ -23,7 +27,7 @@ html {
 
 /* Cambia el color de fondo de la manija de la barra de desplazamiento cuando se pasa el mouse sobre ella */
 .scroll_style::-webkit-scrollbar-thumb:hover {
-    @apply bg-[#424276];
+  @apply bg-[#424276];
 }
 
 /* Pista de la barra de desplazamiento (fondo) */
@@ -31,7 +35,6 @@ html {
   background-color: transparent; /* Color de fondo de la pista de desplazamiento */
   border-radius: 10px; /* Bordes redondeados */
 }
-
 
 .modal_recuperacion {
   z-index: 500 !important;
@@ -867,7 +870,6 @@ html {
       color: #303030;
       text-align: center;
       font-weight: 700;
-      margin-bottom: 8rem;
     }
   }
 
@@ -875,87 +877,96 @@ html {
     display: flex;
     align-items: center;
     gap: 6rem;
-    max-width: 110rem;
+    max-width: 130rem;
     margin: 0 auto;
 
     &__item {
-      padding: 3rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
       width: 33%;
-      background: #fff;
 
-      &:nth-child(2) {
+      &:nth-child(2) &__content {
         background: #b43a34;
         scale: 1.1;
       }
 
-      &:nth-child(2) &__head {
-        span,
-        h5 {
-          color: #fff;
-        }
-      }
-
-      &:nth-child(2) &__body {
-        ul {
-          li {
+      &:nth-child(2) &__content {
+        &__head {
+          span,
+          h5 {
             color: #fff;
           }
         }
       }
 
-      &:nth-child(2) &__foot {
-        a,
-        button {
-          background: #fff;
-          color: #b43a34;
-        }
-      }
-
-      &__head {
-        span {
-          text-transform: uppercase;
-          font-size: 1.5rem;
-          font-weight: 500;
-          color: #5f5f5f;
-          text-align: center;
-          display: block;
-          margin: 0 auto;
-          margin-bottom: 2rem;
-        }
-
-        h5 {
-          font-size: 3.2rem;
-          color: #27275b;
-          text-align: center;
-          font-weight: 900;
-          margin-bottom: 3rem;
-        }
-      }
-
-      &__body {
-        ul {
-          li {
-            font-size: 1.6rem;
-            color: #5f5f5f;
-            text-align: center;
+      &:nth-child(2) &__content {
+        &__body {
+          ul {
+            li {
+              color: #fff;
+            }
           }
         }
       }
 
-      &__foot {
-        padding-top: 4rem;
+      &:nth-child(2) &__content {
+        &__foot {
+          a,
+          button {
+            background: #fff;
+            color: #b43a34;
+          }
+        }
+      }
 
-        a,
-        button {
-          display: flex;
-          width: 100%;
-          text-align: center;
-          background: #b43a34;
-          justify-content: center;
-          text-transform: uppercase;
-          font-weight: 500;
+      &__content {
+        padding: 5rem 2rem;
+        padding-bottom: 4rem;
+        border-radius: 1rem;
+        background: #fff;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        &__head {
+          span {
+            text-transform: uppercase;
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #5f5f5f;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+          }
+
+          h5 {
+            font-size: 3.2rem;
+            color: #27275b;
+            text-align: center;
+            font-weight: 900;
+          }
+        }
+
+        &__body {
+          ul {
+            li {
+              font-size: 1.6rem;
+              color: #5f5f5f;
+              text-align: center;
+            }
+          }
+        }
+
+        &__foot {
+          padding-top: 4rem;
+
+          a,
+          button {
+            display: flex;
+            width: 100%;
+            text-align: center;
+            background: #b43a34;
+            justify-content: center;
+            text-transform: uppercase;
+            font-weight: 500;
+          }
         }
       }
     }
@@ -1580,19 +1591,19 @@ html {
     }
   }
 }
-.swal2-popup{
-    width: 40rem !important;
+.swal2-popup {
+  width: 40rem !important;
 }
-#swal2-title{
-    font-size: 2.5rem !important;
-}
-
-.swal2-actions{
-    font-size: 1.4rem !important;
+#swal2-title {
+  font-size: 2.5rem !important;
 }
 
-.swal2-html-container{
-    font-size: 1.8rem !important;
+.swal2-actions {
+  font-size: 1.4rem !important;
+}
+
+.swal2-html-container {
+  font-size: 1.8rem !important;
 }
 
 .examen {
@@ -1727,10 +1738,9 @@ html {
 }
 
 .radio-input99 label {
-    background-color: rgba(24, 24, 24, 0.13);
-    border: 1px solid #8686ff;
+  background-color: rgba(24, 24, 24, 0.13);
+  border: 1px solid #8686ff;
 }
-  
 
 .result {
   margin-top: 10px;

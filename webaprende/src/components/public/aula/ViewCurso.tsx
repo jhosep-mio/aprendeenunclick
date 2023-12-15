@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 import Loading from '../../shared/Loading'
 import axios from 'axios'
 import { Global } from '../../../helper/Global'
-import useAuth from '../../../hooks/useAuth'
 import {
   type valuesExamenesEntrada,
   type imagenUpladvalues,
@@ -25,13 +24,14 @@ const ViewCurso = (): JSX.Element => {
   const [contenido, setContenido] = useState<valuesCurso[]>([])
   const [curso, setcurso] = useState<productosValues | null>(null)
   const { id, idClase } = useParams()
-  const { token, loading } = useAuth()
+  const token = localStorage.getItem('tokenUser')
   const [player, setPlayer] = useState<string | null>(null)
   const [, setTiempo] = useState('')
   const [progresoClases] = useState<
   Record<string, Record<string, boolean>>
   >({})
   const [, setProgress] = useState(0)
+  const navigate = useNavigate()
 
   const [validacion, setValidacion] = useState(false)
   const [examenesResuelto, setExamenesResuelto] = useState< valuesExamenResuleto | null>(null)
@@ -78,7 +78,6 @@ const ViewCurso = (): JSX.Element => {
     const examenEncontrado = examenEntradaArray.find(
       (objeto: valuesExamenesEntrada) => objeto.id == id
     )
-    console.log(id)
     if (examenEncontrado) {
       setExamenesResuelto(examenEncontrado)
     }
@@ -88,12 +87,24 @@ const ViewCurso = (): JSX.Element => {
     setValidacion(contieneId)
   }
 
+  const getExamenEntrada = async (): Promise<void> => {
+    const request = await axios.get(`${Global.url}/perfilEstudiante`, {
+      headers: {
+        Authorization: `Bearer ${token ?? ''}`
+      }
+    })
+    const examenEntradaArray = request.data.user.examenentrada ? JSON.parse(request.data.user.examenentrada) : []
+    const contieneId = examenEntradaArray.some((objeto: valuesExamenesEntrada) => objeto.id == id)
+    if (!contieneId) {
+      navigate(`/aula/cursos/curso/${id ?? ''}/examen-entrada`)
+    }
+  }
+
   useEffect(() => {
     setLoadingComponent(true)
-    if (!loading && token) {
-      getCurso()
-    }
-  }, [loading, id, idClase])
+    getExamenEntrada()
+    getCurso()
+  }, [id, idClase])
 
   const handleVideoProgress = (
     percent: number,
