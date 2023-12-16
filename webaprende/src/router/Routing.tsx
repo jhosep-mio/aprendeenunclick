@@ -12,6 +12,7 @@ import Examen from '../components/public/aula/Examen'
 import { Registro } from '../components/public/Registro'
 import { Login } from '../components/public/Login'
 import ViewCurso from '../components/public/aula/ViewCurso'
+import { Succes } from '../components/public/Succes'
 
 export const Routing = (): JSX.Element => {
   return (
@@ -20,6 +21,7 @@ export const Routing = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<PublicLayout />}>
             <Route index element={<Home />} />
+            <Route path="success/:ui" element={<Succes />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="registro" element={<Registro />} />

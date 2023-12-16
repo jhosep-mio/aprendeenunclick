@@ -1,3 +1,9 @@
+export interface planValues {
+  nombre: string
+  tiempo: string
+  precio: number
+}
+
 export interface perfilValues {
   nombres: string
   apellidos: string
