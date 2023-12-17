@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import banner1 from '../../../assets/aula/banner/banner1.png'
 import { SiGitbook } from 'react-icons/si'
 import { MdGrade } from 'react-icons/md'
@@ -6,24 +6,17 @@ import teacher from '../../../assets/aula/cursos/teacher.png'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { BiMath } from 'react-icons/bi'
 import 'swiper/css'
-import useAuth from '../../../hooks/useAuth'
-import { useEffect } from 'react'
 
 export const Index = (): JSX.Element | undefined => {
-  const { auth, loading } = useAuth()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!loading && !auth.id) {
-      navigate('/')
-    }
-  }, [auth.id, loading])
-
   return (
         <>
           <div className="load"></div>
           <section className="aula">
             <div className="aula__main">
+
+              <div className="aula__main__item">
+                <img src={banner1} alt="" />
+              </div>
               <div className="aula__main__item" style={{ paddingLeft: '10rem' }}>
                 <h2>
                   Bienvenido <br /> a Nuestra
@@ -50,9 +43,6 @@ export const Index = (): JSX.Element | undefined => {
                     <span>Mis cursos</span>
                   </Link>
                 </div>
-              </div>
-              <div className="aula__main__item">
-                <img src={banner1} alt="" />
               </div>
             </div>
           </section>

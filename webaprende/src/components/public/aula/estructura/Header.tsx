@@ -7,11 +7,14 @@ import useAuth from '../../../../hooks/useAuth'
 import perfil from '../../../../assets/aula/perfil/perfil.png'
 import { Global } from '../../../../helper/Global'
 import axios from 'axios'
+import { useEffect } from 'react'
 
 const HeaderAula = (): JSX.Element => {
   const navigate = useNavigate()
-  const { auth, setAuth, token } = useAuth()
+  const { auth, setAuth, loading } = useAuth()
+  const token = localStorage.getItem('tokenUser')
   const cerrarSession = async (): Promise<void> => {
+    console.log(token)
     const data = new FormData()
     data.append('_method', 'POST')
     await axios.post(`${Global.url}/logout`, data, {
@@ -33,6 +36,12 @@ const HeaderAula = (): JSX.Element => {
     })
     navigate('/')
   }
+  useEffect(() => {
+    if (!loading && !auth.id) {
+      navigate('/')
+    }
+  }, [auth.id, loading])
+
   return (
     <>
       <header className="headerAula">

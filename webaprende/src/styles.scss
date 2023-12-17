@@ -472,7 +472,7 @@ html {
 
 .btn1 {
   font-family: inherit;
-  font-size: 18px;
+  font-size: 16px;
   background: linear-gradient(to bottom, #b43a34 0%, #ea635b 100%);
   color: white;
   padding: 0.7em 3em;
@@ -532,7 +532,7 @@ html {
 
 .btn3 {
   font-family: inherit;
-  font-size: 18px;
+  font-size: 16px;
   background: linear-gradient(to bottom, #5e5ec6 0%, #9898ff 100%);
   color: white;
   padding: 0.7em 3em;
@@ -1284,6 +1284,7 @@ html {
 
       &__links {
         display: flex;
+        justify-content: end;
         gap: 4rem;
 
         a {
@@ -1293,11 +1294,12 @@ html {
         }
       }
 
-      &:first-child {
-        padding-left: 10rem;
+      &:nth-child(2)  {
+        padding-right: 10rem;
       }
       h2 {
         color: #fff;
+        text-align: right;
         font-size: 5.6rem;
         font-weight: 700;
         font-family: "Quicksand", sans-serif;
@@ -1312,6 +1314,7 @@ html {
         margin-top: 1rem;
         color: #fff;
         font-size: 1.6rem;
+        text-align: right;
       }
 
       img {

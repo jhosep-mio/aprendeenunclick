@@ -1,52 +1,23 @@
-import axios from 'axios'
-import { Global } from '../../../../helper/Global'
 import CardCurso from './CardCurso'
-import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 import { type valuesExamenesEntrada, type productosValues } from '../../../shared/Interfaces'
+import { Link } from 'react-router-dom'
 
-const GridCursos = ({ setLoadingComponent }: { setLoadingComponent: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
-  const token = localStorage.getItem('tokenUser')
-  const [cursos, setCursos] = useState<productosValues[]>([])
-  const [examenes, setAllExamenes] = useState<valuesExamenesEntrada[]>([])
-
-  const getCursos = async (): Promise<void> => {
-    const request = await axios.get(`${Global.url}/getProductosToAula`, {
-      headers: {
-        Authorization: `Bearer ${
-          token !== null && token !== '' ? `Bearer ${token}` : ''
-        }`
-      }
-    })
-    setCursos(request.data)
-    setLoadingComponent(false)
-  }
-
-  const getValidacion = async (): Promise<void> => {
-    const request = await axios.get(`${Global.url}/perfilEstudiante`, {
-      headers: {
-        Authorization: `Bearer ${token ?? ''}`
-      }
-    })
-    const examenEntradaArray = request.data.user.examenentrada
-      ? JSON.parse(request.data.user.examenentrada)
-      : []
-    setAllExamenes(examenEntradaArray)
-  }
-
-  useEffect(() => {
-    getValidacion()
-    getCursos()
-  }, [])
-
+const GridCursos = ({ cursos, examenes }: { cursos: productosValues[], examenes: valuesExamenesEntrada[] }): JSX.Element => {
   return (
     <>
       <div className="profileCursos">
         <div className="profileCursos__main">
-          {cursos.map((curso) => (
+          {cursos.length > 0
+            ? cursos.map((curso) => (
             <div className="profileCursos__main__item" key={curso.id}>
               <CardCurso curso={curso} examenes={examenes}/>
             </div>
-          ))}
+            ))
+            : <div className='w-full h-full flex justify-center items-center flex-col gap-12'>
+                <p className='text-white text-4xl pt-12'>☹️ No tienes un plan activo </p>
+                <Link to='/aula/plan' className='text-white text-3xl  bg-paleta-800 hover:bg-paleta-800/70 transition-colors rounded-xl px-6 py-3'>Adquirir un plan</Link>
+            </div>
+            }
         </div>
       </div>
     </>

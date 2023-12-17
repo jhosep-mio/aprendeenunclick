@@ -72,7 +72,7 @@ export const Succes = (): JSX.Element => {
             <div className="window__wrapper__footer">
               <Link
                 className="window__wrapper__footer__what cursor-pointer"
-                to='/mis_cursos'
+                to='/aula/cursos'
               >
                 <BiSolidBookmarks/>Mis cursos
               </Link>

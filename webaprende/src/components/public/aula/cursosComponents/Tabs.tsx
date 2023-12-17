@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import GridCursos from './GridCursos'
+import { type valuesExamenesEntrada, type productosValues } from '../../../shared/Interfaces'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -38,9 +39,11 @@ function a11yProps (index: number): { id: string, 'aria-controls': string } {
 }
 
 export default function BasicTabs ({
-  setLoadingComponent
+  cursos,
+  examenes
 }: {
-  setLoadingComponent: React.Dispatch<React.SetStateAction<boolean>>
+  cursos: productosValues[]
+  examenes: valuesExamenesEntrada[]
 }): JSX.Element {
   const [value, setValue] = React.useState(0)
 
@@ -67,16 +70,16 @@ export default function BasicTabs ({
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <GridCursos setLoadingComponent={setLoadingComponent} />
+        <GridCursos cursos={cursos} examenes={examenes}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <GridCursos setLoadingComponent={setLoadingComponent} />
+        <GridCursos cursos={cursos} examenes={examenes}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <GridCursos setLoadingComponent={setLoadingComponent} />
+        <GridCursos cursos={cursos} examenes={examenes}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <GridCursos setLoadingComponent={setLoadingComponent} />
+        <GridCursos cursos={cursos} examenes={examenes}/>
       </CustomTabPanel>
     </Box>
   )

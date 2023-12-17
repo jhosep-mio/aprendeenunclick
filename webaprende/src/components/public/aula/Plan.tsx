@@ -1,4 +1,4 @@
-const Plan = () => {
+const Plan = (): JSX.Element => {
   return (
     <>
       <section className="plan">
@@ -10,8 +10,8 @@ const Plan = () => {
             <div className="flex flex-col w-full lg:w-[70%]">
               <p className="text-white text-2xl text-justify">
                 <p><strong>Detalle del pago:</strong></p>
-                Tu plan fue adquirido el{" "}
-                <strong>5 de diciembre del 2023</strong> y finaliza el{" "}
+                Tu plan fue adquirido el{' '}
+                <strong>5 de diciembre del 2023</strong> y finaliza el{' '}
                 <strong>5 de enero del 2024.</strong>
               </p>
               <div className="flex gap-4 bg-[#8686ff] w-fit text-2xl text-white p-8 rounded-xl font-bold mt-6 mx-auto">
@@ -38,7 +38,7 @@ const Plan = () => {
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
-export default Plan;
+export default Plan

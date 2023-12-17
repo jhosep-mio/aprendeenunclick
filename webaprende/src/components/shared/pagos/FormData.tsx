@@ -41,6 +41,10 @@ const FormData: FC<FormDataProps> = ({ open, setOpen, plan }) => {
   const handleClickPagar = async (): Promise<void> => {
     setLoadingCorreo(true)
     const uniqueId: string = uuidv4()
+    const plandata = {
+      plan: plan?.nombre,
+      tiempo: plan?.tiempo
+    }
     try {
       const preferenceData = {
         items: [
@@ -48,7 +52,8 @@ const FormData: FC<FormDataProps> = ({ open, setOpen, plan }) => {
             id: `${uniqueId}_${plan?.nombre ?? ''}`,
             title: `${plan?.nombre ?? ''} ${plan?.tiempo ?? ''}`,
             unit_price: plan?.precio,
-            quantity: 1
+            quantity: 1,
+            description: plandata
           }
         ],
         payment_methods: {
@@ -89,7 +94,6 @@ const FormData: FC<FormDataProps> = ({ open, setOpen, plan }) => {
         notification_url:
           'https://apiaprende.logosperu.com.pe/public/api/webhook'
       }
-
       const response = await axios.post(
         'https://api.mercadopago.com/checkout/preferences',
         preferenceData,
@@ -101,7 +105,6 @@ const FormData: FC<FormDataProps> = ({ open, setOpen, plan }) => {
           }
         }
       )
-
       const preferenceId: string = response.data.id
       setPreferenceId(preferenceId)
       const dataArray = []

@@ -41,6 +41,9 @@ const Home = (): JSX.Element => {
   useEffect(() => {
     getCursos()
   }, [loading])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <>

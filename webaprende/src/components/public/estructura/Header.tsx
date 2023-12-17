@@ -14,16 +14,16 @@ export const Header = (): JSX.Element => {
             <nav className="header__main__items__nav">
               <ul>
                 <li>
-                  <a href="#inicio">Inicio</a>
+                  <a href="/#inicio">Inicio</a>
                 </li>
                 <li>
-                  <a href="#planes">Planes</a>
+                  <a href="/#planes">Planes</a>
                 </li>
                 <li>
-                  <a href="#cursos">Cursos</a>
+                  <a href="/#cursos">Cursos</a>
                 </li>
                 <li>
-                  <a href="#contacto">Contacto</a>
+                  <a href="/#contacto">Contacto</a>
                 </li>
               </ul>
             </nav>
