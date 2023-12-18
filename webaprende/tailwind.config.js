@@ -13,7 +13,7 @@ module.exports = withMT({
         primary: '#8686ff',
         secondary: '#E9E9E9',
         paleta: {
-          900: '#2b2b5e',
+          900: '#27275b',
           800: '#b43a34'
         }
       }

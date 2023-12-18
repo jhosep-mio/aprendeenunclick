@@ -881,6 +881,10 @@ html {
   }
 }
 
+.border_selecter{
+   @apply border-4 border-paleta-800 rounded-3xl;
+}
+
 .planes {
   padding: 8rem;
   background: #f9f9f9;
@@ -908,7 +912,6 @@ html {
         background: #b43a34;
         scale: 1.1;
       }
-
       &:nth-child(2) &__content {
         &__head {
           span,
@@ -917,7 +920,6 @@ html {
           }
         }
       }
-
       &:nth-child(2) &__content {
         &__body {
           ul {
@@ -927,7 +929,6 @@ html {
           }
         }
       }
-
       &:nth-child(2) &__content {
         &__foot {
           a,
@@ -937,7 +938,6 @@ html {
           }
         }
       }
-
       &__content {
         padding: 5rem 2rem;
         padding-bottom: 4rem;
@@ -988,6 +988,96 @@ html {
             text-transform: uppercase;
             font-weight: 500;
           }
+        }
+      }
+    }
+  }
+}
+
+.bg_imp{
+    background: gray !important;
+    &:hover{
+        background: gray;
+        transition: none;
+        transform: translate(0);
+        box-shadow: none;
+    }
+}
+
+.planes2 {
+  padding: 8rem;
+  background: #f9f9f9;
+
+  &__title {
+    h2 {
+      font-size: 3.6rem;
+      color: #303030;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    max-width: 130rem;
+    margin: 0 auto;
+
+    &__item {
+      width: 33%;
+
+      &__content {
+        padding: 5rem 2rem;
+        padding-bottom: 5rem;
+        border-radius: 1rem;
+        background: #fff;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        &__head {
+          span {
+            text-transform: uppercase;
+            font-size: 2.1rem;
+            font-weight: 500;
+            color: #5f5f5f;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+          }
+
+          h5 {
+            font-size: 5.2rem;
+            color: #27275b;
+            text-align: center;
+            font-weight: 900;
+          }
+        }
+
+        &__body {
+          ul {
+            li {
+              font-size: 1.6rem;
+              color: #5f5f5f;
+              text-align: center;
+            }
+          }
+        }
+
+        &__foot {
+          padding-top: 4rem;
+          a,
+          button {
+            display: flex;
+            width: 100%;
+            text-align: center;
+            background: #b43a34;
+            justify-content: center;
+            text-transform: uppercase;
+            font-weight: 500;
+          }
+
+          
         }
       }
     }
@@ -1294,7 +1384,7 @@ html {
         }
       }
 
-      &:nth-child(2)  {
+      &:nth-child(2) {
         padding-right: 10rem;
       }
       h2 {

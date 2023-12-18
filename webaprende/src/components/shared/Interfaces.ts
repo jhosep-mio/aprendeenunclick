@@ -326,6 +326,17 @@ export interface mantenimientoValues {
   valor: number
 }
 
+export interface detalleTransaccionValues {
+  id: number
+  created_at: string
+  total_pago: string
+}
+
+export interface miplanValues {
+  id: number
+  description: string
+}
+
 // PRODUCTOS
 export interface productosValues {
   id: number
