@@ -1328,9 +1328,9 @@ html {
   background: #8686ff !important;
 }
 
-.css-1nuo49t-MuiButtonBase-root-MuiTab-root,
 .MuiButtonBase-root-MuiTab-root,
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root,
+.MuiButtonBase-root,
+.MuiButtonBase-root-MuiTab-root,
 .MuiButtonBase-root-MuiTab-root {
   color: #e7e7e7c5 !important;
   font-family: "Quicksand", sans-serif !important;
@@ -1339,7 +1339,7 @@ html {
 }
 
 .Mui-selected,
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+.MuiButtonBase-root-MuiTab-root.Mui-selected {
   color: #fff !important;
 }
 
