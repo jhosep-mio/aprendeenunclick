@@ -13,6 +13,7 @@ import { Registro } from '../components/public/Registro'
 import { Login } from '../components/public/Login'
 import ViewCurso from '../components/public/aula/ViewCurso'
 import { Succes } from '../components/public/Succes'
+import { IndexCalificaciones } from '../components/public/aula/calificaciones/IndexCalificaciones'
 
 export const Routing = (): JSX.Element => {
   return (
@@ -29,6 +30,7 @@ export const Routing = (): JSX.Element => {
             <Route index element={<Index />} />
             <Route path="perfil" element={<Perfil />}/>
             <Route path="cursos" element={<Cursos/>}/>
+            <Route path="mis_calificaciones" element={<IndexCalificaciones/>}/>
             <Route path='plan' element={<Plan/>}/>
             <Route path='cursos/curso/:id' element={<Curso/>}/>
             <Route path='cursos/curso/:id/examen-entrada' element={<Examen/>}/>

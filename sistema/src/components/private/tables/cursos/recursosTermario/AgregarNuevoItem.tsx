@@ -208,23 +208,19 @@ export const AgregarNuevoItem = ({
                     name=""
                     id=""
                     value={
-                        typeof contenidoItem === 'string'
-                          ? contenidoItem
-                          : contenidoItem[0]?.visualizacion || ''
-                      }
-                      onChange={(e) => {
-                        setContenidoItem(e.target.value)
-                      }}
+                      typeof contenidoItem === 'string'
+                        ? contenidoItem
+                        : contenidoItem[0]?.visualizacion || ''
+                    }
+                    onChange={(e) => {
+                      setContenidoItem(e.target.value)
+                    }}
                     className="border border-black w-full text-white  placeholder-gray-400 outline-none focus:outline-none focus:border-black pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-secondary-900 rounded-md transition-all"
                   >
                     <option value="">Seleccionar examen</option>
                     {examenes.map(
                       (examen: { id: number, titulo: string }, index) => (
-                        <option
-                          value={examen.id}
-                          className=""
-                          key={index}
-                        >
+                        <option value={examen.id} className="" key={index}>
                           {examen.titulo}
                         </option>
                       )
@@ -233,6 +229,47 @@ export const AgregarNuevoItem = ({
                 </div>
               </>
             )}
+            {tipo == 'Ejercicio' && (
+              <>
+                <>
+                  <input
+                    className="text-white border border-black w-full  placeholder-gray-400 outline-none focus:outline-none focus:border-black pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-3 ml-0 text-base block bg-secondary-900 rounded-md transition-all"
+                    type="text"
+                    placeholder="Titulo"
+                    id="textI"
+                    value={titulo}
+                    onChange={(e) => {
+                      setTitulo(e.target.value)
+                    }}
+                  />
+                  <div>
+                    <div className="relative w-fit flex justify-center mx-auto mb-6">
+                      <input
+                        className="absolute inset-0 file:hidden cursor-pointer opacity-0"
+                        type="file"
+                        onChange={handleFileChange}
+                        ref={fileInputRef}
+                      />
+                      <button className="w-fit mx-auto px-4 py-2 bg-red-500 text-white font-bold rounded-xl">
+                        SUBIR IMAGENES
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-3 w-full gap-3">
+                      {Array.isArray(contenidoItem) &&
+                        contenidoItem.map((conten, index: number) => (
+                          <img
+                            src={conten.visualizacion}
+                            alt=""
+                            key={index}
+                            className="w-full h-full object-contain"
+                          />
+                        ))}
+                    </div>
+                  </div>
+                </>
+              </>
+            )}
+
             <button
               type="button"
               onClick={() => {

@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import GridCursos from './GridCursos'
 import { type valuesExamenesEntrada, type productosValues } from '../../../shared/Interfaces'
+import GridCursosEnProgreso from './GridCursosEnProgreso'
+import GridCursosSinIniciar from './GridCursosSinIniciar'
+import GridCursosAprobados from './GridCursosAprobados'
 
 interface TabPanelProps {
   children?: React.ReactNode
@@ -40,10 +43,12 @@ function a11yProps (index: number): { id: string, 'aria-controls': string } {
 
 export default function BasicTabs ({
   cursos,
-  examenes
+  examenes,
+  examenesCurso
 }: {
   cursos: productosValues[]
   examenes: valuesExamenesEntrada[]
+  examenesCurso: valuesExamenesEntrada[]
 }): JSX.Element {
   const [value, setValue] = React.useState(0)
 
@@ -65,21 +70,21 @@ export default function BasicTabs ({
         >
           <Tab label="Todos mis cursos" {...a11yProps(0)} />
           <Tab label="Cursos aprobados" {...a11yProps(1)} />
-          <Tab label="Cursos desaprobados" {...a11yProps(2)} />
+          <Tab label="Cursos en progreso" {...a11yProps(2)} />
           <Tab label="Cursos sin revisar" {...a11yProps(3)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <GridCursos cursos={cursos} examenes={examenes}/>
+        <GridCursos cursos={cursos} examenes={examenes} examenesCurso={examenesCurso}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <GridCursos cursos={cursos} examenes={examenes}/>
+        <GridCursosAprobados cursos={cursos} examenes={examenes} examenesCurso={examenesCurso}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <GridCursos cursos={cursos} examenes={examenes}/>
+        <GridCursosEnProgreso cursos={cursos} examenes={examenes} examenesCurso={examenesCurso}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
-        <GridCursos cursos={cursos} examenes={examenes}/>
+        <GridCursosSinIniciar cursos={cursos} examenes={examenes}/>
       </CustomTabPanel>
     </Box>
   )

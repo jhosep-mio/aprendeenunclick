@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react'
 import person from './../../../../assets/examen/person.svg'
 import Loading from '../../../shared/Loading'
 import useAuth from '../../../../hooks/useAuth'
@@ -15,17 +15,22 @@ import axios from 'axios'
 const Examen = ({
   clase,
   validacion,
-  examenesResuelto
+  examenesResuelto,
+  idCurso,
+  setValidacion,
+  actualizarProgresoClase
 }: {
   clase: valuesClase | null
   validacion: boolean
+  idCurso: string | undefined
+  setValidacion: Dispatch<SetStateAction<boolean>>
   examenesResuelto: valuesExamenResuleto | null
+  actualizarProgresoClase: (id: string | undefined, claseId: string | undefined) => void
 }): JSX.Element => {
   const [estado, setEstado] = useState<number>(0)
   const { token } = useAuth()
   const [loadingComponent, setLoadingComponent] = useState(true)
   const [examen, setExamen] = useState<valuesExamenOnly | null>(null)
-
   const getExamen = async (): Promise<void> => {
     setLoadingComponent(true)
     const request = await axios.get(
@@ -46,6 +51,7 @@ const Examen = ({
     String.fromCharCode(65 + index)
 
   useEffect(() => {
+    console.log(clase)
     if (clase?.contenido) {
       getExamen()
     }
@@ -77,6 +83,14 @@ const Examen = ({
               <span className="text-3xl text-secondary-150">Aciertos</span>
             </div>
           </div>
+          {(examenesResuelto?.nota ?? 0) < 6.5 &&
+          <div className='py-6 w-full flex justify-center'>
+            <button
+            onClick={() => { setValidacion(false) }}
+            className='w-fit bg-paleta-800 py-4 px-6 rounded-lg text-3xl hover:bg-secondary-70/70 transition-all text-white'>Reintentar Exámen</button>
+          </div>
+        }
+
           <section className="lg:bg-[#353573] rounded-xl">
             <div className="w-full lg:w-[700px] lg:px-10 mx-auto py-10 ">
               {JSON.parse(examen?.arraydatos ?? '').map(
@@ -135,6 +149,7 @@ const Examen = ({
               )}
             </div>
           </section>
+
         </div>
           : estado === 0
             ? <section
@@ -157,8 +172,11 @@ const Examen = ({
             : (
                 estado === 1 && (
           <ExamenNormal
+
             examen={examen}
             setLoadingComponent={setLoadingComponent}
+            actualizarProgresoClase={actualizarProgresoClase}
+            idCurso={idCurso}
             id={clase?.id ?? ''}
           />
                 )

@@ -18,11 +18,15 @@ interface valuesExamenes {
 export const ExamenNormal = ({
   examen,
   setLoadingComponent,
+  actualizarProgresoClase,
+  idCurso,
   id
 }: {
   examen: valuesExamen | null
   setLoadingComponent: Dispatch<SetStateAction<boolean>>
   id: string | undefined
+  idCurso: string | undefined
+  actualizarProgresoClase: (id: string | undefined, claseId: string | undefined) => void
 }): JSX.Element => {
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const { auth, token } = useAuth()
@@ -142,6 +146,9 @@ export const ExamenNormal = ({
           const data = new FormData()
           data.append('listaexamen', JSON.stringify(nuevosResumenes))
           data.append('_method', 'PUT')
+          if (calificacion >= 6.5) {
+            actualizarProgresoClase(idCurso, id ?? '')
+          }
           try {
             const respuesta = await axios.post(
                     `${Global.url}/saveExamen/${auth.id ?? ''}`,

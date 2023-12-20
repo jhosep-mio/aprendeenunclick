@@ -124,7 +124,7 @@ const SideBar = (): JSX.Element => {
 
                 <ul
                   className={` ${
-                    showSubmenu3 ? 'h-[150px]' : 'h-0'
+                    showSubmenu3 ? 'h-[130px]' : 'h-0'
                   } overflow-y-hidden transition-all`}
                 >
                   <li>
@@ -177,6 +177,15 @@ const SideBar = (): JSX.Element => {
                   className="flex items-center gap-4 py-2 px-4 rounded-lg text-white hover:bg-secondary-900 transition-colors"
                 >
                   <RiStackFill className="text-main" /> Contacto
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="transacciones"
+                  className="flex items-center gap-4 py-2 px-4 rounded-lg text-white hover:bg-secondary-900 transition-colors"
+                >
+                  <RiStackFill className="text-main" /> Transacciones
                 </Link>
               </li>
             </>

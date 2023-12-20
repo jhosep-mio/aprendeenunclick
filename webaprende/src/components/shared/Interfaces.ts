@@ -12,6 +12,31 @@ export interface perfilValues {
   cumpleaños: string
 }
 
+export interface comentariosValues {
+  id: number
+  texto: string
+  idUser: string
+  fecha: string
+  foto: string
+  hora: string
+  clase: string | undefined
+  respuestas: any
+  user: string
+}
+
+export interface valuesSecciones {
+  id: string | undefined
+  tituloSeccion: string
+  idClase: string | undefined
+  archivos: any[]
+}
+
+export interface archivoValuess {
+  id: string | undefined
+  tipo: string
+  contenido: string
+}
+
 export interface carrito {
   id: number | null
   nombre: string
@@ -337,6 +362,28 @@ export interface miplanValues {
   description: string
 }
 
+export interface productosValues2 {
+  id: number
+  nombre: string
+  id_categoria: string
+  clase: string
+  id_marca: string
+  codigo: string
+  stock: string
+  categoria: string
+  marca: string
+  caracteristicas: string
+  precio1: number
+  precio2: number
+  imagen: string
+  tallas: string
+  colores: string
+  oferta: string
+  estado: string
+  created_at: string | null
+  updated_at: string | null
+}
+
 // PRODUCTOS
 export interface productosValues {
   id: number
@@ -403,6 +450,22 @@ export interface valuesClase {
 }
 
 export interface valuesCurso {
+  id: string
+  titulo: string
+  imagen: string
+  caracteristicas: string
+  examen: string
+  clase: valuesClase[]
+}
+
+export interface valuesClase2 {
+  id: string
+  titulo: string
+  tipo: string
+  clase: string
+}
+
+export interface valuesCurso2 {
   id: string
   titulo: string
   imagen: string

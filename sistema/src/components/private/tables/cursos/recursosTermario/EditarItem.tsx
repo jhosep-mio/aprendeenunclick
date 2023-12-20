@@ -203,9 +203,9 @@ export const EditarItem = ({
           <div className="w-full lg:relative  mb-5 flex flex-col justify-between gap-2">
             <div className="w-full gap-6 items-center">
               <h2 className="font-medium text-white w-full mb-8 text-center uppercase text-xl underline">
-                Editar item
+                Editar item2
               </h2>
-              {tipo == 'Clase' && (
+              {tipo == 'Video' && (
                 <>
                   <input
                     className="text-white border border-black w-full  placeholder-gray-400 outline-none focus:outline-none focus:border-black pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-secondary-900 rounded-md transition-all"

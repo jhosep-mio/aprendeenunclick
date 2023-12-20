@@ -1,11 +1,12 @@
 import { type contenidoSeccionValues, type temarioValues } from '../../../../shared/Interfaces'
-import { FaChevronUp } from 'react-icons/fa'
+import { FaChevronUp, FaSignal } from 'react-icons/fa'
 import { BsFillTrash2Fill, BsPencilSquare } from 'react-icons/bs'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { type Dispatch, type SetStateAction, useState } from 'react'
 import { EditarTituloTemario } from './EditarTituloTemario'
 import { AgregarNuevoItem } from './AgregarNuevoItem'
 import { EditarItem } from './EditarItem'
+import { Link } from 'react-router-dom'
 
 export const ListaTemario = ({
   contenido,
@@ -216,7 +217,17 @@ export const ListaTemario = ({
                   >
                     <BsFillTrash2Fill className=" text-red-500 text-xl" />
                   </button>
+                  {clase.tipo == 'Ejercicio' &&
+                    <Link
+                        to={`archivos/${clase.id}`}
+                        type="button"
+                        title='Ver archivos'
+                    >
+                        <FaSignal className=" text-yellow-500 text-2xl" />
+                    </Link>
+                  }
                 </div>
+
               </li>
             ))}
           </ul>

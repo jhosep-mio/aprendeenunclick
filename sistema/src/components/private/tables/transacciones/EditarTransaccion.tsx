@@ -13,17 +13,17 @@ import { type valuesTransaccion } from '../../../shared/Interfaces'
 import { SchemaTransacciones } from '../../../shared/Schemas'
 import { InputsBriefsView } from '../../../shared/InputsBriefsView'
 import { format } from 'date-fns'
-import { PdfUpdate } from '../../../shared/PdfUpdate'
+// import { PdfUpdate } from '../../../shared/PdfUpdate'
 export const EditarTransaccion = (): JSX.Element => {
   const { id } = useParams()
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
   const { setTitle, loadingComponents, setLoadingComponents } = useAuth()
   const [pdf, setPdf] = useState<File | null>(null)
-  const handlePdfChange = (pdf: File | null): void => {
-    // Puedes realizar cualquier lógica adicional aquí si es necesario
-    setPdf(pdf)
-  }
+  //   const handlePdfChange = (pdf: File | null): void => {
+  //     // Puedes realizar cualquier lógica adicional aquí si es necesario
+  //     setPdf(pdf)
+  //   }
   useEffect(() => {
     setLoadingComponents(true)
     setTitle('Transsación')
@@ -176,17 +176,10 @@ export const EditarTransaccion = (): JSX.Element => {
           <h2 className="text-white text-2xl font-bold mb-10 text-center w-full">
             DATOS DEL CLIENTE
           </h2>
-          <div className='absolute right-6 top-6'>
-            {/* <button
-              type="button"
-              className=" bg-secondary-70 px-4 py-3 rounded-xl text-white font-bold"
-            >
-              {' '}
-              Subir Factura
-            </button> */}
+          {/* <div className='absolute right-6 top-6'>
             <PdfUpdate onPdfChange={handlePdfChange}
               initialPdfName={String(pdf)}/>
-          </div>
+          </div> */}
           <div className="w-full lg:relative mb-5 flex flex-col lg:flex-row justify-between gap-3">
             <div className="w-full lg:w-1/3">
               <TitleBriefs titulo="Nombres" />
@@ -264,9 +257,6 @@ export const EditarTransaccion = (): JSX.Element => {
                   </option>
                   <option value="1" className="text-red-500">
                     TERMINADO
-                  </option>
-                  <option value="3" className="text-main">
-                    POR REVISAR
                   </option>
                 </select>
                 <Errors errors={errors.estado} touched={touched.estado} />

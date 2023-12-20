@@ -49,12 +49,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function Clases ({
   contenido,
   idClase,
-  curso
+  curso,
+  progreso
 }: {
   contenido: valuesCurso[]
   idClase: string | undefined
   curso: string
-
+  progreso: Record<string, Record<string, boolean>>
 }): JSX.Element {
   const [expanded, setExpanded] = React.useState<string | false>(
     `panel${contenido[0].id}`
@@ -73,7 +74,7 @@ export default function Clases ({
         <Accordion
           key={conten.id}
           expanded={expanded === `panel${conten.id}`}
-          className=""
+          className="index_despl"
           onChange={handleChange(`panel${conten.id}`)}
         >
           <AccordionSummary
@@ -81,7 +82,7 @@ export default function Clases ({
             id={`panel${conten.id}-header`}
             className="bg-white p-4 shadow-md mt-4"
           >
-            <Typography className="title_clase">{conten.titulo}</Typography>
+            <Typography className="title_clase text-black">{conten.titulo}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <div className="flex items-center h-full w-full">
@@ -91,7 +92,7 @@ export default function Clases ({
                   {conten.clase?.map((clase: valuesClase) => (
                     <Link to={`/cursos/curso/${curso}/clases/clase/${clase.id}`} className="flex gap-2 relative w-full" key={clase.id} >
                         {/* bg-[#8686ff] */}
-                      <span className={`rounded-full w-4 h-4 ${clase.id == idClase ? 'bg-paleta-900' : 'bg-gray-500'} absolute top-0 bottom-0 my-auto -left-[24px]`}></span>
+                      <span className={`rounded-full w-4 h-4 ${clase.id == idClase ? 'bg-paleta-900' : progreso && progreso[curso ?? '']?.[clase.id ?? ''] ? 'bg-[#8686ff]' : 'bg-gray-500'} absolute top-0 bottom-0 my-auto -left-[24px]`}></span>
                       <p className={` text-[16px] w-fit ${clase.id == idClase ? 'text-paleta-900 font-bold' : 'text-[#3b3b3b]'} lowercase first-letter:uppercase`}>
                         {clase.titulo}
                       </p>

@@ -13,6 +13,7 @@ const Cursos = (): JSX.Element => {
   const { auth } = useAuth()
   const [cursos, setCursos] = useState<productosValues[]>([])
   const [examenes, setAllExamenes] = useState<valuesExamenesEntrada[]>([])
+  const [examenesCurso, setAllExamenesCurso] = useState<valuesExamenesEntrada[]>([])
 
   const getCursos = async (): Promise<void> => {
     const request = await axios.get(`${Global.url}/getProductosToAula`, {
@@ -35,7 +36,11 @@ const Cursos = (): JSX.Element => {
     const examenEntradaArray = request.data.user.examenentrada
       ? JSON.parse(request.data.user.examenentrada)
       : []
+    const examenesdecurso = request.data.user.progreso
+      ? JSON.parse(request.data.user.progreso)
+      : []
     setAllExamenes(examenEntradaArray)
+    setAllExamenesCurso(examenesdecurso)
   }
 
   const getcursosToCompra = async (): Promise<void> => {
@@ -75,11 +80,11 @@ const Cursos = (): JSX.Element => {
                     <h2>Mis cursos</h2>
                 </div>
                 <div className="cursos__main__tabs">
-                    <TabsCursos cursos={cursos} examenes={examenes}/>
+                    <TabsCursos cursos={cursos} examenes={examenes} examenesCurso={examenesCurso}/>
                 </div>
             </div>
             <div className="cursos__perfil">
-                <CardGeneral/>
+                <CardGeneral cursos={cursos} examenesCurso={examenesCurso}/>
             </div>
         </section>
     </>

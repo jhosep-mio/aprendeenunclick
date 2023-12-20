@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { logo_white } from '../../../shared/images'
 import { GoTriangleDown } from 'react-icons/go'
-import { PiBookOpenTextLight } from 'react-icons/pi'
+import { PiBookOpenTextLight, PiExam } from 'react-icons/pi'
 import { CiShoppingTag, CiSettings, CiLogout } from 'react-icons/ci'
 import useAuth from '../../../../hooks/useAuth'
 import perfil from '../../../../assets/aula/perfil/perfil.png'
@@ -76,6 +76,12 @@ const HeaderAula = (): JSX.Element => {
                   <Link to="cursos">
                     <PiBookOpenTextLight />
                     Mis cursos
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/aula/mis_calificaciones">
+                    <PiExam />
+                    Mis calificaciones
                   </Link>
                 </li>
                 <li>

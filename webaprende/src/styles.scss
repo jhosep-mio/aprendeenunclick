@@ -10,6 +10,10 @@ html {
   font-size: 62.5%;
 }
 
+.acordion_miscali{
+    background: #7272da !important;
+}
+
 .font_main {
   font-family: "Roboto", sans-serif !important;
 }
@@ -1336,6 +1340,10 @@ html {
   font-family: "Quicksand", sans-serif !important;
   text-transform: none !important;
   font-size: 1.8rem !important;
+}
+
+.index_despl{
+    z-index: 0 !important;
 }
 
 .Mui-selected,

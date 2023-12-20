@@ -18,6 +18,7 @@ import { TemarioCurso } from '../components/private/tables/cursos/TemarioCurso'
 import { ListadoExamenesEntrada } from '../components/private/tables/examenesentrada/ListadoExamenesEntrada'
 import { CrearExamenEntrada } from '../components/private/tables/examenesentrada/CrearExamenEntrada'
 import { EditarExamenEntrada } from '../components/private/tables/examenesentrada/EditarExamenEntrada'
+import { ListaArchivosEjercicios } from '../components/private/tables/cursos/recursosTermario/ListaArchivosEjercicios'
 
 export const Routing = (): JSX.Element => {
   return (
@@ -38,6 +39,7 @@ export const Routing = (): JSX.Element => {
             <Route path="cursos/agregar" element={<CrearCurso />} />
             <Route path="cursos/editar/:id" element={<EditarProducto />} />
             <Route path="cursos/temario/:id" element={<TemarioCurso />} />
+            <Route path="cursos/temario/:id/archivos/:claseId" element={<ListaArchivosEjercicios />} />
             {/* <Route path="cursos/seguimiento/:id" element={<Seguimiento />} />
             <Route path="cursos/seguimiento/:id/comentarios/:claseId" element={<Comentarios />} />
             <Route path="cursos/seguimiento/:id/archivos/:claseId" element={<ListaArchivos />} />

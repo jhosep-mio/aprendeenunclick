@@ -1,8 +1,8 @@
 import { type valuesExamenesEntrada, type productosValues } from '../../../shared/Interfaces'
 import { Link } from 'react-router-dom'
-import CardCurso from './CardCurso'
+import CardCursoAprobados from './CardCursoAprobados'
 
-const GridCursos = ({ cursos, examenes, examenesCurso }: { cursos: productosValues[], examenes: valuesExamenesEntrada[], examenesCurso: valuesExamenesEntrada[] }): JSX.Element => {
+const GridCursosAprobados = ({ cursos, examenes, examenesCurso }: { cursos: productosValues[], examenes: valuesExamenesEntrada[], examenesCurso: valuesExamenesEntrada[] }): JSX.Element => {
   return (
     <>
       <div className="profileCursos">
@@ -10,7 +10,7 @@ const GridCursos = ({ cursos, examenes, examenesCurso }: { cursos: productosValu
           {cursos.length > 0
             ? cursos.map((curso) => (
             <div className="profileCursos__main__item" key={curso.id}>
-              <CardCurso curso={curso} examenes={examenes} examenesCurso={examenesCurso}/>
+              <CardCursoAprobados curso={curso} examenes={examenes} examenesCurso={examenesCurso}/>
             </div>
             ))
             : <div className='w-full h-full flex justify-center items-center flex-col gap-12'>
@@ -24,4 +24,4 @@ const GridCursos = ({ cursos, examenes, examenesCurso }: { cursos: productosValu
   )
 }
 
-export default GridCursos
+export default GridCursosAprobados

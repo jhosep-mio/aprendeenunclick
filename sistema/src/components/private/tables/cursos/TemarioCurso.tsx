@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 import { TitleBriefs } from '../../../shared/TitleBriefs'
 
 export const TemarioCurso = (): JSX.Element => {
-  const { token } = useAuth()
+  const token = localStorage.getItem('token')
   const { id } = useParams()
   const navigate = useNavigate()
   const [openseccion, setOpenSeccion] = useState(false)
@@ -74,7 +74,6 @@ export const TemarioCurso = (): JSX.Element => {
   const saveTemario = async (): Promise<void> => {
     if (!examen) {
       Swal.fire('Debe seleccionar el examen de entrada', '', 'warning')
-      return
     }
     setLoadingComponents(true)
     const token = localStorage.getItem('token')
@@ -135,7 +134,6 @@ export const TemarioCurso = (): JSX.Element => {
               <h2 className="font-medium text-white w-full text-center mb-8 text-3xl">
                 TEMARIO DEL CURSO
               </h2>
-
               <div className="w-full lg:relative mb-5">
                 <TitleBriefs titulo="EXAMEN DE ENTRADA" />
                 <select
