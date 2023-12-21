@@ -15,15 +15,32 @@ import { MdEmail, MdLocalPhone, MdOutlineWhatsapp } from 'react-icons/md'
 import { useEffect, useState } from 'react'
 import useAuth from '../../hooks/useAuth'
 import Loading from '../shared/Loading'
-import { type productosValues } from '../shared/Interfaces'
+import { type ConfiguracionValues, type productosValues } from '../shared/Interfaces'
 import axios from 'axios'
 import { Global } from '../../helper/Global'
 import { ListaPlanes } from './planes/ListaPlanes'
+import VideoIntro from '../shared/video/VideoIntro'
 
 const Home = (): JSX.Element => {
   const { auth, token, loading } = useAuth()
   const [cursos, setCursos] = useState<productosValues[]>([])
   const [loadingComponent, setLoadingComponent] = useState(false)
+  const [data, setData] = useState<ConfiguracionValues>({
+    id: null,
+    celular1: '',
+    celular2: '',
+    correo1: '',
+    correo2: '',
+    direccion1: '',
+    direccion2: '',
+    direccion3: '',
+    facebook: '',
+    instagram: '',
+    youtube: '',
+    linkedin: '',
+    whatsapp: '',
+    horario: ''
+  })
 
   const getCursos = async (): Promise<void> => {
     const request = await axios.get(`${Global.url}/getProductosToAula`, {
@@ -34,8 +51,10 @@ const Home = (): JSX.Element => {
       }
     })
     setCursos(request.data)
-    console.log(request.data)
     setLoadingComponent(false)
+
+    const request2 = await axios.get(`${Global.url}/oneConfi/1`)
+    setData(request2.data)
   }
 
   useEffect(() => {
@@ -77,7 +96,7 @@ const Home = (): JSX.Element => {
         </div>
       </section>
 
-      <ListaPlanes/>
+      <ListaPlanes />
 
       <section className="sectNosotros">
         <div className="sectNosotros__main">
@@ -111,7 +130,12 @@ const Home = (): JSX.Element => {
         <div className="sectCursos__main">
           {cursos?.map((curso) => (
             <div className="sectCursos__main__item" key={curso.id}>
-              <div className="" style={{ background: `url(${Global.urlImages}/productos/${curso.imagen})` }}>
+              <div
+                className=""
+                style={{
+                  background: `url(${Global.urlImages}/productos/${curso.imagen})`
+                }}
+              >
                 <span>{curso.nombre}</span>
               </div>
             </div>
@@ -226,6 +250,8 @@ const Home = (): JSX.Element => {
           </div>
         </div>
       </section>
+
+      <VideoIntro data={data}/>
     </>
   )
 }

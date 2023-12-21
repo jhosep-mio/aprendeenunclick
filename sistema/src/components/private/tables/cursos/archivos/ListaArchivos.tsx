@@ -16,6 +16,7 @@ import {
 import { defaultperfil } from '../../../../shared/Images'
 import { ModalCalificacion } from './ModalCalificacion'
 import Swal from 'sweetalert2'
+import useAuth from '../../../../../hooks/useAuth'
 
 export const ListaArchivos = (): JSX.Element => {
   const { id, claseId } = useParams()
@@ -25,6 +26,7 @@ export const ListaArchivos = (): JSX.Element => {
   const [, setCurso] = useState<productosValues | null>(null)
   const [contenidos, setContenidos2] = useState<string[]>([])
   const [apuntes, setApuntes] = useState<apuntesValues[]>([])
+  const { setTitle } = useAuth()
   const getOneData = async (): Promise<void> => {
     const request = await axios.get(`${Global.url}/showAdmin/${id ?? ''}`, {
       headers: {
@@ -164,6 +166,7 @@ export const ListaArchivos = (): JSX.Element => {
     getOneData()
     getApuntes()
     getEstudiantes()
+    setTitle('Archivos')
   }, [])
 
   return (

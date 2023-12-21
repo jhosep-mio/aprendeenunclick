@@ -15,7 +15,7 @@ export const EditarContacto = (): JSX.Element => {
   const { setTitle, loadingComponents, setLoadingComponents } = useAuth()
 
   useEffect(() => {
-    setTitle('CONTACTO')
+    setTitle('Configuración')
     getBanner()
   }, [])
 
@@ -159,6 +159,18 @@ export const EditarContacto = (): JSX.Element => {
               <Errors errors={errors.correo1} touched={touched.correo1} />
             </div>
           </section>
+
+          <div className="w-full lg:relative mb-5">
+            <TitleBriefs titulo="Video de introducción" />
+            <InputsBriefs
+              name="youtube"
+              type="text"
+              value={values.youtube}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <Errors errors={errors.youtube} touched={touched.youtube} />
+          </div>
 
           <h2 className="text-main text-2xl font-bold text-center mb-10">
             Url Redes

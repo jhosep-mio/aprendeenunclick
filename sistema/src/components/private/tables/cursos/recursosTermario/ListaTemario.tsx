@@ -226,6 +226,15 @@ export const ListaTemario = ({
                         <FaSignal className=" text-yellow-500 text-2xl" />
                     </Link>
                   }
+                  {clase.tipo == 'Examen' &&
+                    <Link
+                        to={`examenes/${clase.id}`}
+                        type="button"
+                        title='Ver exámenes'
+                    >
+                        <FaSignal className=" text-yellow-500 text-2xl" />
+                    </Link>
+                  }
                 </div>
 
               </li>
