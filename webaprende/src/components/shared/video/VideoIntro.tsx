@@ -17,10 +17,11 @@ export default function VideoIntro ({ data }: { data: ConfiguracionValues }): JS
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogContent>
+        <DialogContent className='w-[550px] md:w-[600px]'>
           <iframe
             width="100%"
             height="400"
+            className='mx-auto'
             src={`https://www.youtube.com/embed/${data.youtube}-Gc?si=g1B2kNBz-KMVaBbO`}
             title="YouTube video player"
             frameBorder="0"
